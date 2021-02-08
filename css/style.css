@@ -1,0 +1,106 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.formulario{
+    width: 20%;
+    min-width: 270px;
+    height: 400px;
+    padding: 30px;
+    margin-top: 10px;
+    border: 1px solid #000;
+    background-color: royalblue;
+    color: #FFF;
+    border-radius: 20px;
+}
+.formulario-input{
+    border-radius: 10px;
+    border: 1px solid #FFF;
+}
+.boton-calcular{
+    width: 100%;
+    margin: 50px 0 10px 0;
+    background-color: #FFF;
+    text-align: center;
+    color: royalblue;
+    border: 1px solid #FFF;
+    border-radius: 10px;
+}
+.boton-formulario:hover{
+    background-color: gray;
+}
+.ninno, .adolescente, .anciano, .fumador, .calcular-prioridad{
+    display: none;
+    width: 100%;
+}
+.lista-pacientes, .lista-pacientes-mr, .lista-consulta, .lista-pacientes-espera, .lista-paciente-anciano, .lista-paciente-optimizada{
+    width: 930px;
+    background-color: royalblue;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+.lista-pacientes-mr-input{
+    width: 182px;
+}
+.lista-pacientes-mr, .lista-paciente-anciano, .lista-paciente-optimizada{
+    width: 750px;
+    background-color: royalblue;
+    visibility: hidden;
+}
+.titulo-lista, .titulo-consulta, .titulo-optimizado{
+    border-bottom: 1px solid #FFF;
+}
+.titulo-lista, .dato-lista{
+    width: 180px;
+}
+.lista-consulta{
+    width: 950px;
+}
+.titulo-consulta{
+    width: 200px;
+}
+.titulo-optimizado{
+    width: 130px;
+}
+.lista-pacientes-espera{
+    width: 570px;
+}
+.funcionalidades{
+    background-color: #335DFF;
+    color: #FFF;
+    width: 90%;
+    min-width: 1150px;
+    margin: 0px auto;
+    padding: 20px 5px;
+}
+.funcionalidades-input{
+    width: 200px;  
+}
+.liberar-consulta-boton, .funcionalidades-boton, .formulario-boton{
+    width: 200px;
+    background-color: #FFF;
+    padding: 5px;
+    border: 5px solid #335DFF;
+    text-decoration: none;
+}
+a{
+    color: #000;
+}
+.liberar-consulta-boton:hover, .funcionalidades-boton:hover, .formulario-boton:hover{
+    width: 200px;
+    background-color: yellow;
+}
+.formulario-boton{
+    margin: 50px 0 10px 0;
+}
+.logo-fonasa{
+    height: 120px;
+}
+footer{
+    height: 80px;
+    padding: 20px;
+}

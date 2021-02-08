@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <img src="assets/logo-fonasa.png" alt="Logo Fonasa" class="logo-fonasa">
+    </div>
+    <div class="funcionalidades">
+        <div class="d-flex justify-content-center my-4">
+            <form action="registro.php" method="POST" class="formulario">
+                <h2 class="text-center">REGISTRAR PACIENTE</h2>
+                <div class="d-flex flex-column justify-content-center">
+                    <label>Nombre</label>
+                    <input class="formulario-input" type="text" name="nombre" placeholder="Ingresa nombre" required>
+                    <label>Edad</label>
+                    <input class="formulario-input" type="number" name="edad" id="edad_input" min="0" max="100" placeholder="Ingresa edad" required>
+                    <div>
+                        <div id="adolescente_id" class="adolescente">
+                            <label>Es fumador?</label>
+                            <input type="checkbox" name="fumador" id="fumador_check" value="fumador">
+                            <div class="fumador" id="fumador_input">
+                                <label>Años fumando</label>
+                                <input class="w-100" type="number" name="annosFumador" id="fumando_id">
+                            </div>
+                        </div>
+                        <div id="anciano_id" class="anciano">
+                            <label>Tiene dieta?</label>
+                            <input type="checkbox" name="dieta" id="dieta_check" value="dieta">
+                        </div>
+                    
+                    </div>
+                    <input class="formulario-boton" type="submit" name="ingresar" value="Enviar">
+                </div>
+            </form>
+            <div class="lista-pacientes">
+                <h2 class="text-center">Lista de pacientes</h2>
+                <div class="d-flex">
+                    <div class="titulo-lista">Nombre</div>
+                    <div class="titulo-lista">Edad</div>
+                    <div class="titulo-lista">Número historia clinica</div>
+                    <div class="titulo-lista">Prioridad</div>
+                    <div class="titulo-lista">Riesgo</div>
+                </div>
+                <div class="d-flex flex-wrap" id="lista">
+                </div>
+            </div>
+        </div> 
+        
+        <!--Lista de Espera-->
+        <div class="d-flex justify-content-center">
+            <div class="lista-pacientes-espera">
+                <h2>Sala de Espera</h2>
+                <div class="d-flex">
+                    <div class="titulo-lista">Nombre</div>
+                    <div class="titulo-lista">Edad</div>
+                    <div class="titulo-lista">Prioridad</div>
+                </div>
+                <div class="d-flex flex-wrap" id="listaPE"></div>
+                <div class="my-4">
+                    <button class="liberar-consulta-boton" id="atenderPaciente">Atender paciente</button>
+                </div>
+            </div>
+            <div class="lista-pacientes-espera">
+                <h2>Sala de Espera Urgencia</h2>
+                <div class="d-flex">
+                    <div class="titulo-lista">Nombre</div>
+                    <div class="titulo-lista">Edad</div>
+                    <div class="titulo-lista">Prioridad</div>
+                </div>
+                <div class="d-flex flex-wrap" id="listaPEUrgencia"></div>
+                <div class="my-4">
+                    <button class="liberar-consulta-boton" id="atenderPacienteUrgencia">Atender paciente</button>
+                </div>
+            </div>
+        </div>
+        
+        <!--Consultas-->
+        <div class="lista-consulta mx-auto">
+            <h2>Consultas</h2>
+            <!--Liberar consultas-->
+            <div class="d-flex">
+                <div class="titulo-lista">ID</div>
+                <div class="titulo-lista">Pacientes atendidos</div>
+                <div class="titulo-lista">Nombre Especialista</div>
+                <div class="titulo-consulta">Tipo de consulta</div>
+                <div class="titulo-lista">Estado</div>
+            </div>
+            <div class="d-flex flex-wrap" id="consulta"></div>
+            <div class="my-4">
+                <a class="liberar-consulta-boton" href="liberar.php">Liberar Consultas</a>
+            </div>
+        </div>
+            
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column w-100">
+                <!--Lista de pacientes de mayor riesgo-->
+                <div class="d-flex justify-content-around px-3">
+                    <div class="lista-pacientes-mr-input">
+                        <Label>Ingrese un número</Label>
+                        <input class="funcionalidades-input" type="number" name="numeroHistoria" id="numeroHistoria">
+                        <button class="funcionalidades-boton" id="LPMR">Listar pacientes de mayor riesgo</button>
+                    </div>
+                    <div id="listaMR" class="lista-pacientes-mr">
+                        <h2 class="text-center">Lista de pacientes mayor riesgo</h2>
+                        <div class="d-flex">
+                            <div class="titulo-lista">Nombre</div>
+                            <div class="titulo-lista">Edad</div>
+                            <div class="titulo-lista">N° historia clinica</div>
+                            <div class="titulo-lista">Riesgo</div>
+                        </div>
+                        <div class="d-flex flex-wrap" id="listaPMR">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <!--Lista de fumadores que deben ser atendidos urgente-->
+                <div class="d-flex justify-content-around px-3">
+                    <div class="lista-pacientes-mr-input">
+                        <button class="funcionalidades-boton" id="LPFMR">Listar pacientes fumadores de mayor riesgo</button>
+                    </div>
+                    <div id="listaF" class="lista-pacientes-mr">
+                        <h2 class="text-center">Lista de pacientes fumadores de mayor riesgo</h2>
+                        <div class="d-flex">
+                            <div class="titulo-lista">Nombre</div>
+                            <div class="titulo-lista">Edad</div>
+                            <div class="titulo-lista">N° historia clinica</div>
+                            <div class="titulo-lista">Riesgo</div>
+                        </div>
+                        <div class="d-flex flex-wrap" id="listaPFMR">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <!--Pacientes mas atendidos-->
+                <div class="d-flex justify-content-around px-3">
+                    <div class="lista-pacientes-mr-input">
+                        <button class="funcionalidades-boton" id="consultaPAtendidos">Consulta con más pacientes atendidos</button>
+                    </div>
+                    <div id="consultaMA" class="lista-pacientes-mr">
+                        <h2 class="text-center">Consulta con más pacientes atendidos</h2>
+                        <div class="d-flex">
+                            <div class="titulo-lista">ID</div>
+                            <div class="titulo-lista">Pacientes Atendidos</div>
+                            <div class="titulo-lista">Nombre Especialista</div>
+                            <div class="titulo-lista">Tipo Consulta</div>
+                        </div>
+                        <div id="consultaMasAtendidos" class="d-flex flex-wrap"></div>
+                    </div>
+                </div>
+                <hr>
+
+                <!--Lista Pacientes mas ancianos-->
+                <div class="d-flex justify-content-around px-3">
+                    <div class="lista-pacientes-mr-input">
+                        <button class="funcionalidades-boton" id="pacienteAnciano">Paciente mas anciano</button>
+                    </div>
+                    <div id="listaPA" class="lista-paciente-anciano">
+                        <h2 class="text-center">Paciente mas Anciano</h2>
+                        <div class="d-flex">
+                            <div class="titulo-lista">Nombre</div>
+                            <div class="titulo-lista">Edad</div>
+                            <div class="titulo-lista">N° historia clinica</div>
+                            <div class="titulo-lista">Prioridad</div>
+                        </div>
+                        <div id="listaPacienteAnciano" class="d-flex flex-wrap"></div>
+                    </div>
+                </div>
+                <hr>
+
+                <!--Optimizar atencion-->
+                <div class="d-flex justify-content-around px-3">
+                    <div class="lista-pacientes-mr-input">
+                        <button class="funcionalidades-boton" id="optimizarAtencion">Optimizar Atención</button>
+                    </div>
+                    <div id="listaOp" class="lista-paciente-optimizada">
+                        <h2 class="text-center">Lista pacientes Optimizada</h2>
+                        <div class="d-flex">
+                            <div class="titulo-lista">Nombre</div>
+                            <div class="titulo-optimizado">Edad</div>
+                            <div class="titulo-optimizado">N° historia clinica</div>
+                            <div class="titulo-optimizado">Prioridad</div>
+                            <div class="titulo-optimizado">Riesgo</div>
+                        </div>
+                        <div id="listaOptimizada" class="d-flex flex-wrap"></div>
+                        <button id="atenderPacienteOp" class="formulario-boton">Atender Paciente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="d-flex justify-content-center">
+            <span>Diego Aguilera Vidal</span>&nbsp;
+            <span id="copyright"></span> 
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+<!-- <script src="js/vue.js"></script> -->
+</html>
